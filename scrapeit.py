@@ -14,20 +14,20 @@ LIMIT = 100
 reddit_read_only = praw.Reddit(client_id='9ZjVoxUW3X-VqVMeqFvUxQ', client_secret='9r8LqCpH6wkP8UG2cIC3P-haTGtfAQ', user_agent='BigScrapes')
 
 #subs = ['Brutalism', 'UrbanHell', 'sovietarchitecture', 'AbandonedPorn', 'Abandoned', 'UrbanExploration']
-subs = ['Brutalism']
+s = input("Enter a subreddit: ")
 urls = [] #a list of image URLs to be downloaded
 
-for s in subs:
-    subreddit = reddit_read_only.subreddit(s)
+#for s in subs:
+subreddit = reddit_read_only.subreddit(s)
 
-    #print("\n***Subreddit*** " + s)
+#print("\n***Subreddit*** " + s)
 
-    for post in subreddit.top(limit=LIMIT):
-        if not post.selftext:
-            #print("\nTitle: " + post.title)
-            #print("\nURL: " + post.url)
+for post in subreddit.top(limit=LIMIT):
+    if not post.selftext:
+        #print("\nTitle: " + post.title)
+        #print("\nURL: " + post.url)
 
-            urls.append(post.url)
+        urls.append(post.url)
 
 print(urls)
 
